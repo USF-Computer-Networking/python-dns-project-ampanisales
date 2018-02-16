@@ -1,4 +1,4 @@
-""" dnshw.py
+""" dnsproj.py
 
 Author: Anthony Panisales
 
