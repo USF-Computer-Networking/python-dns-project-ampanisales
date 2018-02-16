@@ -38,4 +38,4 @@ if __name__ == '__main__':
         elif args.t is not False:
             query("TXT", args.t)
     except:
-        print("Error: Invalid domain name")
+        print("Query failed")
