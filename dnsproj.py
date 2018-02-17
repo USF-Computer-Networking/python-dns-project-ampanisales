@@ -2,7 +2,7 @@
 
 Author: Anthony Panisales
 
-- Finds DNS resource records from a domain name
+- Finds different types of DNS resource records from a domain name
 
 - Code for DNS queries inspired by this source:
 	https://www.adampalmer.me/iodigitalsec/2014/11/21/performing-dns-queries-python/
