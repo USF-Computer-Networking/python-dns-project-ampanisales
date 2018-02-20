@@ -4,7 +4,11 @@ Author: Anthony Panisales
 
 - Finds DNS resource records from a domain name
 
+- Finds the hostname of an IP address
+
 - Example usage: python dnsproj.py -a yahoo.com
+
+- Example usage: python dnsproj.py -p 8.8.8.8
 
 - Code for DNS queries inspired by this source:
     https://www.adampalmer.me/iodigitalsec/2014/11/21/performing-dns-queries-python/
@@ -36,6 +40,7 @@ parser.add_argument('-m', '--mx', default=False, help="Finds (mail exchange reco
 parser.add_argument('-n', '--ns', default=False, help="Finds (name server record) resource records")
 parser.add_argument('-t', '--txt', default=False, help="Finds (text record) resource records")
 parser.add_argument('-e', '--entire', default=False, help="Finds all types of resource records available in this program")
+parser.add_argument('-p', '--ptr', default=False, help="Finds the hostname of an IP address")
 
 if __name__ == '__main__':
     args = parser.parse_args()
@@ -50,5 +55,7 @@ if __name__ == '__main__':
             query("TXT", args.txt)
         elif args.entire is not False:
             all(args.entire)
+        elif args.ptr is not False:
+            query("PTR", '.'.join(reversed(args.ptr.split("."))) + ".in-addr.arpa")
     except:
         print("Query failed")
