@@ -28,7 +28,7 @@ def query(resRecType, domainName):
     for rdata in myAnswers:
         print(rdata)
 
-def all(domainName):
+def queryAllTypes(domainName):
     rrTypes = ["A", "MX", "NS", "TXT"]
     for rrType in rrTypes:
         query(rrType, domainName)
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         elif args.txt is not False:
             query("TXT", args.txt)
         elif args.entire is not False:
-            all(args.entire)
+            queryAllTypes(args.entire)
         elif args.ptr is not False:
             query("PTR", '.'.join(reversed(args.ptr.split("."))) + ".in-addr.arpa")
     except:
