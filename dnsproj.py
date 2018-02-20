@@ -20,7 +20,7 @@ from future.utils import python_2_unicode_compatible
 import argparse
 import dns.resolver
 
-def query(resRecType, domainName):
+def queryDNS(resRecType, domainName):
     print("\t" + resRecType)
     print("-----------------")
     myResolver = dns.resolver.Resolver()
@@ -31,7 +31,7 @@ def query(resRecType, domainName):
 def queryAllTypes(domainName):
     rrTypes = ["A", "MX", "NS", "TXT"]
     for rrType in rrTypes:
-        query(rrType, domainName)
+        queryDNS(rrType, domainName)
         print("\n")
 
 parser = argparse.ArgumentParser()
@@ -46,16 +46,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
     try:
         if args.address is not False:
-            query("A", args.address)
+            queryDNS("A", args.address)
         elif args.mx is not False:
-            query("MX", args.mx)
+            queryDNS("MX", args.mx)
         elif args.ns is not False:
-            query("NS", args.ns)
+            queryDNS("NS", args.ns)
         elif args.txt is not False:
-            query("TXT", args.txt)
+            queryDNS("TXT", args.txt)
         elif args.entire is not False:
             queryAllTypes(args.entire)
         elif args.ptr is not False:
-            query("PTR", '.'.join(reversed(args.ptr.split("."))) + ".in-addr.arpa")
+            queryDNS("PTR", '.'.join(reversed(args.ptr.split("."))) + ".in-addr.arpa")
     except:
         print("Query failed")
