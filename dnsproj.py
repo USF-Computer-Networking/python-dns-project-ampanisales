@@ -34,15 +34,14 @@ def queryAllTypes(domainName):
         queryDNS(rrType, domainName)
         print("\n")
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-a', '--address', default=False, help="Finds (address record) resource records")
-parser.add_argument('-m', '--mx', default=False, help="Finds (mail exchange record) resource records")
-parser.add_argument('-n', '--ns', default=False, help="Finds (name server record) resource records")
-parser.add_argument('-t', '--txt', default=False, help="Finds (text record) resource records")
-parser.add_argument('-e', '--entire', default=False, help="Finds all types of resource records available in this program")
-parser.add_argument('-p', '--ptr', default=False, help="Finds the hostname of an IP address")
-
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-a', '--address', default=False, help="Finds (address record) resource records")
+    parser.add_argument('-m', '--mx', default=False, help="Finds (mail exchange record) resource records")
+    parser.add_argument('-n', '--ns', default=False, help="Finds (name server record) resource records")
+    parser.add_argument('-t', '--txt', default=False, help="Finds (text record) resource records")
+    parser.add_argument('-e', '--entire', default=False, help="Finds all types of resource records available in this program")
+    parser.add_argument('-p', '--ptr', default=False, help="Finds the hostname of an IP address")
     args = parser.parse_args()
     try:
         if args.address is not False:
