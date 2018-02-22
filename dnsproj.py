@@ -57,5 +57,7 @@ if __name__ == '__main__':
             queryAllTypes(args.entire)
         elif args.ptr is not False:
             queryDNS("PTR", '.'.join(reversed(args.ptr.split("."))) + ".in-addr.arpa")
+        else:
+            parser.print_help()
     except:
         print("Query failed")
